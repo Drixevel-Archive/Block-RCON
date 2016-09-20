@@ -1,6 +1,9 @@
 #pragma semicolon 1
 #pragma newdecls required
 
+#define PLUGIN_VERSION "1.0.0"
+#define PLUGIN_DESCRIPTION "Disables all access to RCON-based commands."
+
 #include <sourcemod>
 #include <smrcon>
 
@@ -11,8 +14,8 @@ public Plugin myinfo =
 {
 	name = "Block RCON", 
 	author = "Keith Warren (Drixevel)", 
-	description = "Disables all access to RCON-based commands.", 
-	version = "1.0.0", 
+	description = PLUGIN_DESCRIPTION, 
+	version = PLUGIN_VERSION, 
 	url = "http://www.drixevel.com/"
 };
 
@@ -20,6 +23,7 @@ public void OnPluginStart()
 {
 	LoadTranslations("common.phrases");
 	
+	CreateConVar("sm_blockrcon_version", PLUGIN_VERSION, PLUGIN_DESCRIPTION, FCVAR_REPLICATED | FCVAR_NOTIFY | FCVAR_SPONLY | FCVAR_DONTRECORD);
 	hConVars[0] = CreateConVar("sm_blockrcon_status", "1", "Status of the plugin.", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	hConVars[1] = CreateConVar("sm_blockrcon_logattempts", "1", "Log any attempts used to access the RCON command.", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	hConVars[2] = CreateConVar("sm_blockrcon_logformat", ".%m_%y", "Log formatting to use for the postfix information. (Can be empty)", FCVAR_NOTIFY, true);
