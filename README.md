@@ -1,2 +1,2 @@
-# Block-RCON
-A Sourcemod plugin that blocks RCON commands entirely as well as blocks the 'rcon_password' console variable from changes.
+# Sourcemod - Block RCON
+A Sourcemod project which allows server operators to automatically disable any kind of RCON access to their servers using the Source Engine.
